@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.1'
+        classpath 'com.android.tools.build:gradle:2.3.3'
     }
 }
 apply plugin: 'android-library'
@@ -14,7 +14,7 @@ dependencies {
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 15

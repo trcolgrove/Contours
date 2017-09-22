@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/thomascolgrove/code/contours/PdCore/build/intermediates/res/merged/release/layout/device_list.xml",
+        "source": "/Users/thomascolgrove/code/contours/AndroidMidi/build/intermediates/bundles/default/res/layout/device_list.xml"
+    },
+    {
+        "merged": "/Users/thomascolgrove/code/contours/PdCore/build/intermediates/res/merged/release/layout/device_name.xml",
+        "source": "/Users/thomascolgrove/code/contours/AndroidMidi/build/intermediates/bundles/default/res/layout/device_name.xml"
+    }
+]

@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 SynthInfo si = synthInfoMap.get(synthNames.get(i));
                 String synthJson = new Gson().toJson(si);
                 trainingIntent.putExtra("synth", synthJson);
+                trainingIntent.putExtra("sound_name", si.soundName);
                 startActivity(trainingIntent);
                 finish();
             }

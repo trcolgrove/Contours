@@ -353,6 +353,11 @@ public class TrainingActivity extends AbstractSingleMidiActivity {
         Toast.makeText(this, "USB MIDI Device " + midiOutputDevice.getUsbDevice().getDeviceName() + " has been attached.", Toast.LENGTH_LONG).show();
     }
 
+    public void onMidiReset(@NonNull MidiInputDevice usbDevice) {
+        // deprecated method.
+        // do nothing
+    }
+
     @Override
     public void onDeviceAttached(@NonNull UsbDevice usbDevice) {
         // deprecated method.
@@ -408,6 +413,56 @@ public class TrainingActivity extends AbstractSingleMidiActivity {
 
     @Override
     public void onMidiSingleByte(@NonNull final MidiInputDevice sender, int cable, int byte1) {
+    }
+
+    @Override
+    public void onMidiTimeCodeQuarterFrame(@NonNull MidiInputDevice midiInputDevice, int i, int i1) {
+
+    }
+
+    @Override
+    public void onMidiSongSelect(@NonNull MidiInputDevice midiInputDevice, int i, int i1) {
+
+    }
+
+    @Override
+    public void onMidiSongPositionPointer(@NonNull MidiInputDevice midiInputDevice, int i, int i1) {
+
+    }
+
+    @Override
+    public void onMidiTuneRequest(@NonNull MidiInputDevice midiInputDevice, int i) {
+
+    }
+
+    @Override
+    public void onMidiTimingClock(@NonNull MidiInputDevice midiInputDevice, int i) {
+
+    }
+
+    @Override
+    public void onMidiStart(@NonNull MidiInputDevice midiInputDevice, int i) {
+
+    }
+
+    @Override
+    public void onMidiContinue(@NonNull MidiInputDevice midiInputDevice, int i) {
+
+    }
+
+    @Override
+    public void onMidiStop(@NonNull MidiInputDevice midiInputDevice, int i) {
+
+    }
+
+    @Override
+    public void onMidiActiveSensing(@NonNull MidiInputDevice midiInputDevice, int i) {
+
+    }
+
+    @Override
+    public void onMidiReset(@NonNull MidiInputDevice midiInputDevice, int i) {
+
     }
 
     @Override

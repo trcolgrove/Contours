@@ -1,6 +1,10 @@
 package edu.tufts.contours.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Class keeping track of the data from one contours session
@@ -19,8 +23,11 @@ public class ScoreSet {
     private Integer longest_streak;
     private Integer average_streak;
     private java.util.Date date;
-    private ArrayList<ScoreSingle> singles;
-    private ArrayList<SurveyResponse> surveyResponses;
+    private transient ArrayList<ScoreSingle> singles;
+    private transient ArrayList<SurveyResponse> surveyResponses;
+
+    public static final List<String> FIELD_NAMES = Arrays.asList("user_id", "difficulty", "interval_size", "total_score",
+            "elapsed_time", "notes_hit", "notes_missed", "longest_streak", "average_streak", "date");
 
     public ScoreSet() {
     }
@@ -130,6 +137,14 @@ public class ScoreSet {
 
     public void setSurveyResponses(ArrayList<SurveyResponse> surveyResponses) {
         this.surveyResponses = surveyResponses;
+    }
+
+    public Map<String, String> getSurveyResponsesAsMap() {
+        Map<String, String> surveyResponseMap = new HashMap<String, String>();
+        for (SurveyResponse surveyResponse : this.getSurveyResponses()) {
+            surveyResponseMap.put(surveyResponse.getQuestion(), surveyResponse.getResponse());
+        }
+        return surveyResponseMap;
     }
 
     public int getInterval_size() {
