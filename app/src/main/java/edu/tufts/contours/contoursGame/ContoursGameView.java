@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -140,10 +141,11 @@ public class ContoursGameView extends SurfaceView {
         initGameLoop();
         initStaff();
 
-        difficulty = ((Activity) context).getIntent().getStringExtra("difficulty");
-        intervalSize = ((Activity) context).getIntent().getIntExtra("interval_size", 0);
-        sound = ((Activity) context).getIntent().getStringExtra("sound");
-        test = ((Activity) context).getIntent().getBooleanExtra("test", false);
+        Intent intent = ((Activity) context).getIntent();
+        difficulty = intent.getStringExtra("difficulty");
+        intervalSize = intent.getIntExtra("interval_size", 0);
+        test = intent.getBooleanExtra("test", false);
+        sound = intent.getStringExtra("sound_name");
 
         String[] contourStrings = generateContours(difficulty, intervalSize);
         List<Contour> baseContours = ContourFactory.getContoursFromStringArray(contourStrings, context);
@@ -403,7 +405,7 @@ public class ContoursGameView extends SurfaceView {
         if(first.getMidiValue() ==  midiValue){
             if((notes.size() - 1) == contour.getCursorPosition()) {
                 scoreKeeper.contourComplete(contour);
-                if(contourIndex < contours.size()-1) {
+                if(contourIndex < contourCount -1) {
                     first.hit();
                     nextContour();
                 } else {

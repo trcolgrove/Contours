@@ -1,9 +1,13 @@
 package edu.tufts.contours.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -23,12 +27,8 @@ import android.widget.ViewSwitcher;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.trcolgrove.contours.R;
-import edu.tufts.contours.contoursGame.ScoreSingle;
-import edu.tufts.contours.data.DataManager;
-import edu.tufts.contours.data.ServerUtil;
-import edu.tufts.contours.contoursGame.SurveyResponse;
-import edu.tufts.contours.contoursGame.ScoreSet;
 
+import java.io.IOException;
 import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
@@ -37,12 +37,19 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import edu.tufts.contours.data.DataManager;
+import edu.tufts.contours.data.ScoreSet;
+import edu.tufts.contours.data.ScoreSingle;
+import edu.tufts.contours.data.ServerUtil;
+import edu.tufts.contours.data.SurveyResponse;
+
 
 public class EndReportActivity extends ActionBarActivity {
 
     private static final String TAG = "EndReportActivity";
     private RadioGroup surveyRg; //radio group for survey questions
 
+    private final int WRITE_EXTERNAL_STORAGE_ID = 9;
     private TextSwitcher questionText; //text representing the current survey question
 
     private String[] surveyQuestions; //An array of the questions to be asked.
@@ -93,7 +100,6 @@ public class EndReportActivity extends ActionBarActivity {
                 if (group.getCheckedRadioButtonId() != -1) {
                     nextButton.setEnabled(true);
                 }
-                //TODO: implement
             }
         });
         nextButton = (Button) findViewById(R.id.next_button);
@@ -168,10 +174,28 @@ public class EndReportActivity extends ActionBarActivity {
         ArrayList<ScoreSingle> contourSingles = new Gson().fromJson(singles,
                 new TypeToken<ArrayList<ScoreSingle>>() {}.getType());
 
-        results = new ScoreSet(dm.getUserAlias(), difficulty, intervalSize, totalScore, totalTime,
+        results = new ScoreSet(dm.getUserAlias(), difficulty, intervalSize + 1, totalScore, totalTime,
                 notesHit, notesMissed, longestStreak, averageStreak, completionDate, contourSingles);
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case WRITE_EXTERNAL_STORAGE_ID: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    return;
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -207,11 +231,39 @@ public class EndReportActivity extends ActionBarActivity {
         }
     }
 
+    private void checkPermissions() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        WRITE_EXTERNAL_STORAGE_ID);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
+    }
+
     /**
      * Click function for the survey's next button
      * @param view
      */
-    public void onNextButtonClicked(View view) {
+    public void onNextButtonClicked(View view) throws IOException {
         int rbId = surveyRg.getCheckedRadioButtonId();
         RadioButton selected = (RadioButton) findViewById(rbId);
         String response = selected.getText().toString();
@@ -222,10 +274,17 @@ public class EndReportActivity extends ActionBarActivity {
             surveyRg.clearCheck();
             nextButton.setEnabled(false);
         } else {
-            serverUtil.postScoreSet(results);
-            Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(i);
-            this.finish();
+            int permission = ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            if(permission == PackageManager.PERMISSION_GRANTED) {
+                serverUtil.postScoreSet(results);
+                dm.writeScoreSetToExternalStorage(results, results.getUser_id());
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+                this.finish();
+            } else {
+                checkPermissions();
+            }
         }
     }
 }

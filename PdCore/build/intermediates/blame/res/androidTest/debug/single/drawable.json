@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/thomascolgrove/code/contours/PdCore/build/intermediates/res/merged/androidTest/debug/drawable/icon.png",
+        "source": "/Users/thomascolgrove/code/contours/PdCore/build/intermediates/bundles/debug/res/drawable/icon.png"
+    },
+    {
+        "merged": "/Users/thomascolgrove/code/contours/PdCore/build/intermediates/res/merged/androidTest/debug/drawable/din5.png",
+        "source": "/Users/thomascolgrove/code/contours/AndroidMidi/build/intermediates/bundles/default/res/drawable/din5.png"
+    }
+]
