@@ -101,7 +101,6 @@ public class TrainingActivity extends AbstractSingleMidiActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        FirebaseCrash.report(new Exception("Activity has started :)"));
         setContentView(R.layout.activity_training);
 
         ScoreBarItem sb = (ScoreBarItem) findViewById(R.id.score_label);
