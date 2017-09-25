@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.gson.Gson;
 import com.trcolgrove.contours.R;
 
@@ -100,6 +101,7 @@ public class TrainingActivity extends AbstractSingleMidiActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        FirebaseCrash.report(new Exception("Activity has started :)"));
         setContentView(R.layout.activity_training);
 
         ScoreBarItem sb = (ScoreBarItem) findViewById(R.id.score_label);

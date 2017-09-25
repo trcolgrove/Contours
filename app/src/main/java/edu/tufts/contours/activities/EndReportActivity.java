@@ -8,7 +8,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,7 +44,7 @@ import edu.tufts.contours.data.ServerUtil;
 import edu.tufts.contours.data.SurveyResponse;
 
 
-public class EndReportActivity extends ActionBarActivity {
+public class EndReportActivity extends AppCompatActivity {
 
     private static final String TAG = "EndReportActivity";
     private RadioGroup surveyRg; //radio group for survey questions
