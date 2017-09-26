@@ -99,7 +99,7 @@ public class DataManager {
         File externalStorage = Environment.getExternalStorageDirectory();
         File dir = new File(externalStorage.getAbsolutePath() + "/test_results/" + userId + "/");
 
-        dir.mkdir();
+        dir.mkdirs();
         return dir;
     }
 
