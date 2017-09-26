@@ -3,7 +3,7 @@ package edu.tufts.contours.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.trcolgrove.contours.R;
 import edu.tufts.contours.data.DataManager;
 
-public class LoginActivity extends ActionBarActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private String TAG = "LoginActivity";
 

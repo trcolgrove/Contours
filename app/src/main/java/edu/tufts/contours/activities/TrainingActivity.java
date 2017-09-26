@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.google.gson.Gson;
 import com.trcolgrove.contours.R;
 
