@@ -36,7 +36,7 @@
     "soundName" : "piano_1",
     "adsr" : {"attack" : 75,
       "decay" : 400,
-      "sustain": 0.3,
-      "release": 50}
+      "sustain": 0,
+      "release": 0}
   }
 ]
