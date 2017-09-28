@@ -1,6 +1,33 @@
+#built application files
+*.apk
+*.ap_
+
+# Java class files
+*.class
+
+# Generated Files
+bin/
+gen/
+
 .gradle
+*iml
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
+/captures
+.externalNativeBuild
+
+
+/*/out
+/*/*/build
+/*/*/production
+*.iws
+*.ipr
+*~
+*.swp
+
+/PdCore/build/**
+/AndroidMidi/build/**
+/volley/build/**

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "367514449281",
+    "firebase_url": "https://contours-c21ce.firebaseio.com",
+    "project_id": "contours-c21ce",
+    "storage_bucket": "contours-c21ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367514449281:android:4940694af0f485b7",
+        "android_client_info": {
+          "package_name": "edu.tufts.contours"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367514449281-36io30dbqaigvubmnff84lsqldcvr1uk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.tufts.contours",
+            "certificate_hash": "e9f3b59c8d2e8bf8ae5dd274ff4fa5b687532d4b"
+          }
+        },
+        {
+          "client_id": "367514449281-ldk09hoj7hn6n9vvj9tjukfjna6bafen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwbQjLNPC1XL3we4suHsvGWw3zEt3bkcw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367514449281-ldk09hoj7hn6n9vvj9tjukfjna6bafen.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

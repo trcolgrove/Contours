@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.concurrent.Semaphore;
 
 import de.greenrobot.dao.query.QueryBuilder;
-import edu.tufts.contours.contoursGame.ScoreSet;
 
 /**
  * Convenience class for interfacing with

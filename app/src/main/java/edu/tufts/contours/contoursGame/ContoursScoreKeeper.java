@@ -5,13 +5,14 @@ import android.os.SystemClock;
 import android.support.annotation.IntDef;
 
 import com.google.gson.Gson;
-import edu.tufts.contours.events.ScoreEvent;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 
 import de.greenrobot.event.EventBus;
+import edu.tufts.contours.data.ScoreSingle;
+import edu.tufts.contours.events.ScoreEvent;
 
 /**
  * Created by Thomas on 7/14/15.
@@ -124,7 +125,7 @@ public class ContoursScoreKeeper {
 
         double percentError = (double)currentNotesMissed/(currentNotesHit + currentNotesMissed) * 100;
 
-        scoreSingles.add(new ScoreSingle(contour.getId(), difficulty, intervalSize, sound, contour.getNotes().get(0).getMidiValue(),
+        scoreSingles.add(new ScoreSingle(contour.getId(), difficulty, intervalSize + 1, sound, contour.getNotes().get(0).getMidiValue(),
                 totalContourTime, currentNotesHit, currentNotesMissed, percentError, successTime,
                 calculateStandardDev(indivNoteTimes)));
     }

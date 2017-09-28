@@ -1,5 +1,8 @@
 package edu.tufts.contours.data;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by Thomas on 3/4/16.
  */
@@ -16,6 +19,9 @@ public class ScoreSingle {
     private double percentError;
     private long successDuration;
     private double interOnsetIntervalStdDev;
+
+    public static final List<String> FIELD_NAMES =
+            Arrays.asList("contourId", "difficulty", "noteGap", "sound", "contourStartMidiNote", "completionTime", "notesHit", "numberOfErrors", "percentError", "successDuration", "interOnsetIntervalStdDev");
 
     public ScoreSingle(int contourId, String difficulty, int noteGap, String sound,
                        int contourStartMidiNote, long completionTime, int notesHit, int numberOfErrors,
