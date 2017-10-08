@@ -64,6 +64,9 @@ repositories {
     maven {
         url 'https://jitpack.io'
     }
+    maven {
+        url 'https://github.com/kshoji/USB-MIDI-Driver/raw/master/MIDIDriver/snapshots'
+    }
     mavenCentral()
 }
 
@@ -72,7 +75,7 @@ dependencies {
     compile project(':PdCore')
     compile project(':volley')
     compile 'com.sromku:simple-storage:1.2.0'
-    compile 'com.github.kshoji:USB-MIDI-Driver:v0.1.4@aar'
+    compile 'jp.kshoji:midi-driver:0.1.2:@aar'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'de.greenrobot:greendao:2.0.0'
     compile 'com.google.code.gson:gson:2.3.1'
