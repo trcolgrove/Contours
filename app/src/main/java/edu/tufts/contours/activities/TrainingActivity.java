@@ -417,56 +417,6 @@ public class TrainingActivity extends AbstractSingleMidiActivity {
     }
 
     @Override
-    public void onMidiTimeCodeQuarterFrame(@NonNull MidiInputDevice midiInputDevice, int i, int i1) {
-
-    }
-
-    @Override
-    public void onMidiSongSelect(@NonNull MidiInputDevice midiInputDevice, int i, int i1) {
-
-    }
-
-    @Override
-    public void onMidiSongPositionPointer(@NonNull MidiInputDevice midiInputDevice, int i, int i1) {
-
-    }
-
-    @Override
-    public void onMidiTuneRequest(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
-    public void onMidiTimingClock(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
-    public void onMidiStart(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
-    public void onMidiContinue(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
-    public void onMidiStop(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
-    public void onMidiActiveSensing(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
-    public void onMidiReset(@NonNull MidiInputDevice midiInputDevice, int i) {
-
-    }
-
-    @Override
     public void onMidiMiscellaneousFunctionCodes(@NonNull final MidiInputDevice sender, int cable, int byte1, int byte2, int byte3) {
     }
 
